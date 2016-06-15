@@ -1,0 +1,9 @@
+1. Build out framework
+2. Solve User Experiences
+  *The provided application should satifsy the following user scenarios:
+    As an employee,
+    I would like to see all video links with the most recent first so that I can easily view which awesome videos my team mates are posting.As an employee,
+    I want to view a top ten list of videos ranked by number of views so that I can see what's most popular amoung my team mates.
+    I want to view a top ten list of videos ranked by number of votes so that I can see what's most liked by my team mates.
+    I want to submit a new video link so that I can share my favorite Internet content with the company.
+    I should be able to vote-up or vote-down a video link once per day so I can contribute to the company's most highly-favored videos.
