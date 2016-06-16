@@ -1,0 +1,6 @@
+<h1>Home</h1>
+<div ng-repeat="video in data.videoLibrary.response.data">
+    <h1>{{video.attributes.title}}</h1>
+    <iframe ng-src="{{trustSrc(vimeo)}}"/></iframe>
+
+</div>

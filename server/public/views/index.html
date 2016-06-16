@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <script src="/vendors/angular/angular.min.js" text="text/javascript"></script>
     <script src="/vendors/angular-route/angular-route.min.js" text="text/javascript"></script>
+    <script src="/vendors/angular-sanitize/angular-sanitize.min.js" text="text/javascript"></script>
+
     <script src="/assets/scripts/app.js" text="text/javascript"></script>
     <script src="/assets/scripts/controllers.js" text="text/javascript"></script>
     <script src="/assets/scripts/factories.js" text="text/javascript"></script>
@@ -13,5 +15,13 @@
   </head>
   <body>
     <h1>Video Application</h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#add">Add</a></li>
+      <li><a href="#topTen">Top Ten</a></li>
+    </ul>
+    <main ng-view>
+
+    </main>
   </body>
 </html>
