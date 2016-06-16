@@ -38,8 +38,8 @@ router.post("/addVideo", function(req, res){
       },
       body: "{  \"title\": \""+title+"\",  \"url\": \""+url+"\",  \"slug\": \""+slug+"\"}"
     }, function (error, response, body) {
-      console.log('Status:', response.statusCode);
-      console.log('Headers:', JSON.stringify(response.headers));
+      //console.log('Status:', response.statusCode);
+      //console.log('Headers:', JSON.stringify(response.headers));
       console.log('Response:', body);
       res.send(body);
     });

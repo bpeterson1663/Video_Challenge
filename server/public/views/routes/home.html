@@ -1,6 +1,9 @@
 <h1>Home</h1>
-<div ng-repeat="video in data.videoLibrary.response.data">
+
+<div ng-repeat="video in data.videoLibrary.response.data | orderBy: 'attributes.created_at'">
     <h1>{{video.attributes.title}}</h1>
-    <iframe ng-src="{{trustSrc(video.attributes.url)}}"/></iframe>
+    <video ng-src="{{trustSrc(video.attributes.url)}}" controls>
+
+    </video>
 
 </div>
