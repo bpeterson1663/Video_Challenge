@@ -2,10 +2,18 @@ myApp.controller("ShowVideoController", ["$scope", "$sce", "VideoService", funct
 
     VideoService.getVideos();
     $scope.data = VideoService;
-    console.log($scope.data);
+
     $scope.trustSrc = function(src){
       return $sce.trustAsResourceUrl(src);
-    }
+    };
 
-    $scope.vimeo = "//player.vimeo.com/video/22439234";
+}]);
+
+myApp.controller("AddVideoController", ["$scope", "VideoService", function($scope, VideoService){
+  $scope.addVideo = function(video){
+    var slug = video.title.toLowerCase();
+    video.slug = slug;
+    console.log(video);
+    VideoService.addVideo(video);
+  };
 }]);

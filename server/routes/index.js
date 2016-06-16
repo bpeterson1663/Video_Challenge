@@ -19,11 +19,30 @@ router.get('/getVideos', function(req, res){
       console.log('Status:', response.statusCode);
       console.log('Headers:', JSON.stringify(response.headers));
       console.log('Response:', body);
-      //Send Data back down
+      //Send Data back to client side
       res.send(body);
   });
+});
 
+router.post("/addVideo", function(req, res){
+    var title = req.body.title;
+    var url = req.body.url;
+    var slug = req.body.slug;
 
+    request({
+      method: 'POST',
+      url: 'https://private-anon-a46491567-proofapi.apiary-mock.com/videos',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': 'eFuXWvwaHAFYxb7SbkwhrDu4'
+      },
+      body: "{  \"title\": \""+title+"\",  \"url\": \""+url+"\",  \"slug\": \""+slug+"\"}"
+    }, function (error, response, body) {
+      console.log('Status:', response.statusCode);
+      console.log('Headers:', JSON.stringify(response.headers));
+      console.log('Response:', body);
+      res.send(body);
+    });
 });
 
 

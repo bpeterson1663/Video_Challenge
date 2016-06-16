@@ -7,7 +7,8 @@ myApp.config(["$routeProvider", function($routeProvider){
           controller: "ShowVideoController"
         }).
         when('/add', {
-          templateUrl: "/views/routes/add.html"
+          templateUrl: "/views/routes/add.html",
+          controller: "AddVideoController"
         }).
         when('/topTen', {
           templateUrl: "/views/routes/topTen.html"
