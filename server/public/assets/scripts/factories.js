@@ -13,10 +13,24 @@ myApp.factory("VideoService", ["$http", function($http){
     });
   };
 
+  var checkDay = function(){
+    var day = new Date();
+    var result = day.getDay();
+    return result;
+  };
+
+  var checkHour = function(){
+    var hour = new Date();
+    var result = hour.getHours();
+    return result;
+  };
+
   return{
     getVideos: getVideos,
     videoLibrary: videoLibrary,
-    addVideo: addVideo
+    addVideo: addVideo,
+    checkDay: checkDay,
+    checkHour: checkHour,
   }
 
 }]);

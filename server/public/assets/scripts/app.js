@@ -11,7 +11,8 @@ myApp.config(["$routeProvider", function($routeProvider){
           controller: "AddVideoController"
         }).
         when('/topTen', {
-          templateUrl: "/views/routes/topTen.html"
+          templateUrl: "/views/routes/topTen.html",
+          controller: "TopTenController"
         }).
         otherwise({
           redirectTo: "/home"
