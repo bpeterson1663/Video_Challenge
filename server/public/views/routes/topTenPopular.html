@@ -3,7 +3,7 @@
     <div flex-gt-sm="50" flex>
     <md-content >
         <md-list flex>
-          <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | orderBy: '-attributes.vote_tally'">
+          <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | orderBy: '-attributes.vote_tally' | limitTo: 2">
             <anguvideo class="angular-video" ng-model="video.attributes.url" ></anguvideo>
             <div class="md-list-item-text" layout="column">
             <h3>{{video.attributes.title}}</h3>
