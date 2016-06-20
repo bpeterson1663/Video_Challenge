@@ -5,7 +5,8 @@ The application will only be available for use during business hours - Monday - 
 If an individual tries to use the site outside of those hours, they will be redirected to a closed page. 
 
 #How to use
-**For security purposes the auth token to connect to the API is not available on github. You can dowload this repository and still use without if you want to see the code. 
+**For security purposes the auth token to connect to the API is not available on github so you will not be able to view or add videos
+
 Download the repository and using the the command line, navigate to the main directory then run "npm start".
 You will see a message "Listening on port 3000" if successful. 
 Then in your browser type in "localhost:3000" and you will be up and running. 
