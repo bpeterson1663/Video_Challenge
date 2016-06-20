@@ -42,12 +42,13 @@ myApp.controller("AddVideoController", ["$scope", "$window", "VideoService", fun
       $window.location.href = '/views/closed.html'; //redirect to closed page if true
   }else{
     //Takes in video object from DOM
+    VideoService.getVideos();
     $scope.addVideo = function(video){
       var slug = video.title.toLowerCase();
       video.slug = slug;
-      console.log(video);
-      VideoService.addVideo(video);
+      var response = VideoService.addVideo(video);
     };
+
   }
 }]);
 
