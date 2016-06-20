@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 
 var request = require('request');
-
+var authToken = "xZg8rFgNekwMCyEZ1Kdh2HsA";
 //Route to get Vidoes
 router.get('/getVideos', function(req, res){
   //Request made to ProofAPI
@@ -12,7 +12,7 @@ router.get('/getVideos', function(req, res){
       url: 'https://proofapi.herokuapp.com/videos?page&per_page',
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': 'xZg8rFgNekwMCyEZ1Kdh2HsA'
+        'X-Auth-Token': ''+authToken+''
       }}, function (error, response, body) {
       console.log('Status:', response.statusCode);
       console.log('Headers:', JSON.stringify(response.headers));
@@ -53,7 +53,7 @@ router.post("/updateVideoLike", function(req, res){
       url: 'https://proofapi.herokuapp.com/videos/'+id+'/votes',
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': 'xZg8rFgNekwMCyEZ1Kdh2HsA'
+        'X-Auth-Token': ''+authToken+''
       },
       body: "{  \"opinion\": "+vote+"}"
     }, function (error, response, body) {
@@ -91,7 +91,7 @@ router.post("/addVideo", function(req, res){
       url: 'https://proofapi.herokuapp.com/videos',
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': 'xZg8rFgNekwMCyEZ1Kdh2HsA'
+        'X-Auth-Token': ''+authToken+''
       },
       body: "{  \"title\": \""+title+"\",  \"url\": \""+url+"\",  \"slug\": \""+slug+"\"}"
       }, function (error, response, body) {

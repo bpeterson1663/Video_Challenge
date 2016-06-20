@@ -4,6 +4,7 @@
   <md-content>
       <md-list flex>
         <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | orderBy: '-attributes.created_at'">
+          <!--anguvideo is a npm module for displaying embeded Youtube and vimeo urls-->
           <anguvideo class="angular-video" ng-model="video.attributes.url" ></anguvideo>
           <div class="md-list-item-text" layout="column">
           <h3>{{video.attributes.title}}</h3>
