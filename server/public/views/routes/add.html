@@ -1,8 +1,15 @@
-<h1>Add</h1>
-<form ng-submit="addVideo(video)">
-  <label for="title">Title: </label>
-  <input name="title" type="text" ng-model="video.title" />
-  <label for="addnew">URL: </label>
-  <input name="addnew" type="text" ng-model="video.url"/>
-  <input type="submit" value="Submit Video" />
-</form>
+<h2>Add</h2>
+<md-content class="md-padding">
+  <form ng-submit="addVideo(video)">
+    <md-input-container>
+      <label for="title">Title: </label>
+      <input name="title" required type="text" ng-model="video.title" />
+    </md-input-container>
+    <md-input-container>
+      <label for="addnew">URL: </label>
+      <input name="addnew" required type="text" ng-model="video.url"/>
+    </md-input-container>
+    </br>
+    <md-button type="submit" class="md-primary md-raised">Submit Video</md-button>
+  </form>
+</md-content>

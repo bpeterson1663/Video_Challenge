@@ -1,9 +1,11 @@
-<h1>Home</h1>
+<h2>Home</h2>
 
 <div ng-repeat="video in data.videoLibrary.response.data | orderBy: 'attributes.created_at'">
-    <h1>{{video.attributes.title}}</h1>
-    <video ng-src="{{trustSrc(video.attributes.url)}}" controls>
+    <h3>{{video.attributes.title}}</h3>
+    <anguvideo class="angular-video" ng-model="video.attributes.url"></anguvideo>
 
-    </video>
+    <!--<video controls>
+        <source ng-src="{{trustSrc(video.attributes.url)}}" >
+    </video>-->
 
 </div>

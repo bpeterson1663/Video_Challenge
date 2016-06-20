@@ -1,0 +1,8 @@
+<h2>Top Ten Most Viewed</h2>
+<div ng-repeat="video in data.videoLibrary.response.data | orderBy: 'attributes.view_tally'">
+    <h3>{{video.attributes.title}}</h3>
+    <video ng-src="{{trustSrc(video.attributes.url)}}" controls>
+
+    </video>
+
+</div>

@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp", ["ngSanitize", "ngRoute", "ngMaterial", "ngAnimate"]);
+var myApp = angular.module("myApp", [, "ngRoute", "ngMaterial", "ngAnimate", "anguvideo"]);
 
 myApp.config(["$routeProvider", function($routeProvider){
       $routeProvider.
@@ -10,8 +10,12 @@ myApp.config(["$routeProvider", function($routeProvider){
           templateUrl: "/views/routes/add.html",
           controller: "AddVideoController"
         }).
-        when('/topTen', {
-          templateUrl: "/views/routes/topTen.html",
+        when('/topTenViewed', {
+          templateUrl: "/views/routes/topTenViewed.html",
+          controller: "TopTenController"
+        }).
+        when('/topTenPopular', {
+          templateUrl: "/views/routes/topTenPopular.html",
           controller: "TopTenController"
         }).
         otherwise({

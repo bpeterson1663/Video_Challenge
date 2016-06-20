@@ -1,4 +1,4 @@
-myApp.controller("ShowVideoController", ["$scope","$window", "$sce", "VideoService", function($scope, $window, $sce, VideoService){
+myApp.controller("ShowVideoController", ["$scope","$window", "VideoService", function($scope, $window, VideoService){
     // if((VideoService.checkDay() == 0 || VideoService.checkDay() == 6) || (VideoService.checkHour() > 17 || VideoService.checkHour() < 9 )){
     // if{
     //   $window.location.href = '/views/closed.html';
@@ -6,10 +6,6 @@ myApp.controller("ShowVideoController", ["$scope","$window", "$sce", "VideoServi
       VideoService.checkDay();
       VideoService.getVideos();
       $scope.data = VideoService;
-
-      $scope.trustSrc = function(src){
-        return $sce.trustAsResourceUrl(src);
-      };
     //}
 }]);
 
@@ -26,4 +22,7 @@ myApp.controller("AddVideoController", ["$scope", "VideoService", function($scop
 
 myApp.controller("TopTenController", ["$scope", "VideoService", function($scope, VideoService){
   console.log("Controller Working");
+  VideoService.getVideos();
+  $scope.data = VideoService;
+
 }]);
