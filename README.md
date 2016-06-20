@@ -4,6 +4,7 @@ Individuals can like or dislike a video that is posted while also viewwing the t
 The application will only be available for use during business hours - Monday - Friday 9:00 AM to 5:00 PM. 
 If an individual tries to use the site outside of those hours, they will be redirected to a closed page. 
 
+Technologies being used: HTML5, CSS3, Node.js, Express.js, AngularJS, Angular Material
 #How to use
 **For security purposes the auth token to connect to the API is not available on github so you will not be able to view or add videos
 
