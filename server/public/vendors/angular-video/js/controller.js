@@ -6,5 +6,5 @@ myApp.controller("AppCtrl", ['$scope', function ($scope) {
     $scope.youTubeShareURL = "http://youtu.be/5EVMjnHFg-w";
     $scope.youTubeEmbededURL = "http://www.youtube.com/embed/u9hauSrihYQ";
     $scope.vimeoURL = "http://vimeo.com/35514005";
+    console.log("Here");
 }]);
-

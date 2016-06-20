@@ -1,29 +1,41 @@
 myApp.controller("ShowVideoController", ["$scope","$window", "VideoService", function($scope, $window, VideoService){
-    // if((VideoService.checkDay() == 0 || VideoService.checkDay() == 6) || (VideoService.checkHour() > 17 || VideoService.checkHour() < 9 )){
-    // if{
-    //   $window.location.href = '/views/closed.html';
-    // }else{
-      VideoService.checkDay();
+    //checks if Day of the week is either saturday or sunday and if outside of 9:00 AM to 5:00 PM
+    var day = VideoService.checkDay();
+    var hour = VideoService.checkHour();
+    if((day == 0 || day == 6) || (hour > 17 || hour < 9 )){
+          $window.location.href = '/views/closed.html'; //redirect to closed page if true
+    }else{
+      //get videos from api
       VideoService.getVideos();
-
+      //make data available on scope
       $scope.data = VideoService;
 
-      $scope.addView = function(id){
-        VideoService.addView(id);
-        console.log("Function Fired");
-      };
+      // $scope.addView = function(id){
+      //   VideoService.addView(id);
+      //   console.log("Function Fired");
+      // };
+      //When like or dislike button is pressed on the dom
       $scope.updateLike = function(video, status){
         video.review = status;
         VideoService.updateLike(video);
-        console.log("Function Fired");
       };
 
-
-    //}
+      // var elements = document.getElementsByClassName("md-primary");
+      // console.log(elements);
+      // for(var i=0; i < elements.length; i++){
+      //   if(elements[i].onclick){
+      //     showAlert();
+      //   }
+      //
+      // }
+      // function showAlert(){
+      //   console.log("test");
+      // }
+    }
 }]);
 
 myApp.controller("AddVideoController", ["$scope", "VideoService", function($scope, VideoService){
-
+  //Takes in video object from DOM
   $scope.addVideo = function(video){
     var slug = video.title.toLowerCase();
     video.slug = slug;
@@ -34,18 +46,15 @@ myApp.controller("AddVideoController", ["$scope", "VideoService", function($scop
 }]);
 
 myApp.controller("TopTenController", ["$scope", "VideoService", function($scope, VideoService){
-  console.log("Controller Working");
+  //get data from api
   VideoService.getVideos();
+  //make data available on $scope
   $scope.data = VideoService;
-
-  $scope.addView = function(id){
-    VideoService.addView(id);
-    console.log("Function Fired");
-  };
+  //Have like funcionality on these pages also
   $scope.updateLike = function(video, status){
     video.review = status;
     VideoService.updateLike(video);
-    console.log("Function Fired");
   };
+
 
 }]);

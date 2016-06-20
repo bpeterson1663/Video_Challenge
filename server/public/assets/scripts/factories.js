@@ -2,11 +2,12 @@ myApp.factory("VideoService", ["$http", function($http){
   var videoLibrary = {};
   //Make Route to GET request to ProofAPI.
   var getVideos = function(){
+    //get videos and store them in library object
     $http.get('/getVideos').then(function(res){
       videoLibrary.response = res.data;
     });
   };
-
+  //calls add video route in server
   var addVideo = function(newVideo){
     $http.post('/addVideo', newVideo).then(function(res){
 
@@ -33,14 +34,14 @@ myApp.factory("VideoService", ["$http", function($http){
     //     wineList.response = response.data;
     // })
   };
+  //calls updatevideo route on server
   var updateLike = function(video){
-    console.log("Inside the factory" ,video.id);
     $http.post("/updateVideoLike/", video).then(function(response){
         console.log('response ', response);
         //getVideos();
     });
   };
-
+  
   return{
     getVideos: getVideos,
     videoLibrary: videoLibrary,

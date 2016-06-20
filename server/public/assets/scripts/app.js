@@ -1,3 +1,4 @@
+//Configuration settings for controllers on pages
 var myApp = angular.module("myApp", [, "ngRoute", "ngMaterial", "ngAnimate", "anguvideo"]);
 
 myApp.config(["$routeProvider", function($routeProvider){

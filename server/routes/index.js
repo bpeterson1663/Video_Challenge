@@ -7,19 +7,18 @@ var request = require('request');
 //Route to get Vidoes
 router.get('/getVideos', function(req, res){
   //Request made to ProofAPI
-  request({
-    method: 'GET',
-    url: 'https://private-anon-a46491567-proofapi.apiary-mock.com/videos?page&per_page',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Auth-Token': 'eFuXWvwaHAFYxb7SbkwhrDu4'
-    }}, function (error, response, body) {
+      request({
+      method: 'GET',
+      url: 'https://proofapi.herokuapp.com/videos?page&per_page',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': 'xZg8rFgNekwMCyEZ1Kdh2HsA'
+      }}, function (error, response, body) {
       console.log('Status:', response.statusCode);
       console.log('Headers:', JSON.stringify(response.headers));
       console.log('Response:', body);
-      //Send Data back to client side
       res.send(body);
-  });
+    });
 });
 
 // router.get("/updateVideoView/", function(req, res){
@@ -38,30 +37,29 @@ router.get('/getVideos', function(req, res){
 //         // console.log('Response:', body);
 //       });
 // });
-
+//ROute to update videolie
 router.post("/updateVideoLike", function(req, res){
-  console.log("Request in updateVideoLike Route", req.body.id);
+  console.log(req.body.id);
     var id = req.body.id;
-    var votes = req.body.attributes.vote_tally;
+    var vote;
     if(req.body.review == 'like'){
-      votes++;
+      vote=1;
     }
     else if(req.body.review == 'dislike'){
-      votes--;
+      vote= -1;
     }
-    console.log("votes equal", votes);
     request({
-        method: 'PATCH',
-        url: 'https://private-anon-0dff40ff7-proofapi.apiary-mock.com/videos/'+id,
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Auth-Token': 'eFuXWvwaHAFYxb7SbkwhrDu4'
-        },
-        body: "{ \"vote_tally: \""+votes+"\"}"
-      }, function (error, response, body) {
-        console.log('Status:', response.statusCode);
-        console.log('Headers:', JSON.stringify(response.headers));
-        console.log('Response:', body);
+      method: 'POST',
+      url: 'https://proofapi.herokuapp.com/videos/'+id+'/votes',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': 'xZg8rFgNekwMCyEZ1Kdh2HsA'
+      },
+      body: "{  \"opinion\": "+vote+"}"
+    }, function (error, response, body) {
+      console.log('Status:', response.statusCode);
+      console.log('Headers:', JSON.stringify(response.headers));
+      console.log('Response:', body);
         res.send(body);
       });
 });
@@ -87,20 +85,22 @@ router.post("/addVideo", function(req, res){
     var url = req.body.url;
     var slug = req.body.slug;
     console.log("title", title);
+
     request({
       method: 'POST',
-      url: 'https://private-anon-a46491567-proofapi.apiary-mock.com/videos',
+      url: 'https://proofapi.herokuapp.com/videos',
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': 'eFuXWvwaHAFYxb7SbkwhrDu4'
+        'X-Auth-Token': 'xZg8rFgNekwMCyEZ1Kdh2HsA'
       },
       body: "{  \"title\": \""+title+"\",  \"url\": \""+url+"\",  \"slug\": \""+slug+"\"}"
-    }, function (error, response, body) {
-      //console.log('Status:', response.statusCode);
-      //console.log('Headers:', JSON.stringify(response.headers));
-      //console.log('Response:', body);
+      }, function (error, response, body) {
+      console.log('Status:', response.statusCode);
+      console.log('Headers:', JSON.stringify(response.headers));
+      console.log('Response:', body);
       res.send(body);
     });
+
 });
 
 

@@ -1,14 +1,9 @@
 <h2>Top Ten Most Popular</h2>
   <div ng-cloak layout-gt-sm="row" layout="column">
     <div flex-gt-sm="50" flex>
-    <md-toolbar layout="row" class="md-hue-3">
-      <div class="md-toolbar-tools">
-        <span>Videos</span>
-      </div>
-    </md-toolbar>
     <md-content >
         <md-list flex>
-          <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | orderBy: '-attributes.vote_tally'"  ng-click="null">
+          <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | orderBy: '-attributes.vote_tally'">
             <anguvideo class="angular-video" ng-model="video.attributes.url" ></anguvideo>
             <div class="md-list-item-text" layout="column">
             <h3>{{video.attributes.title}}</h3>
