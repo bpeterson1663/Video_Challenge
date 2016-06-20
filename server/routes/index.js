@@ -3,7 +3,8 @@ var router = express.Router();
 var path = require('path');
 
 var request = require('request');
-var authToken;
+//remove before posting to github
+var authToken = "xZg8rFgNekwMCyEZ1Kdh2HsA";
 //Route to get Vidoes
 router.get('/getVideos', function(req, res){
   //Request made to ProofAPI
