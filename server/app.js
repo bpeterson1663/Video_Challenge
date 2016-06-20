@@ -4,8 +4,9 @@ var path = require('path');
 var index = require('./routes/index.js');
 var bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use('/', index);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/", index);
 
 app.set("port", process.env.PORT || 3000);
 

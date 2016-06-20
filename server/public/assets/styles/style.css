@@ -2,7 +2,11 @@ main{
   margin: 0 auto;
   text-align: center;
 }
-angular-video{
-  width:200px;
+md-list-item{
+  display: block;
+}
+.angular-video{
+  margin: 0 auto;
+  width:300px;
   height: auto;
 }

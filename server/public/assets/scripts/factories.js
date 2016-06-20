@@ -25,12 +25,30 @@ myApp.factory("VideoService", ["$http", function($http){
     return result;
   };
 
+  var addView = function(id){
+    $http.put("/updateVideoView/"+id).then(function(response){
+
+    });
+    // $http.get("/getWineDatabase/"+userInfo.data._id).then(function(response){
+    //     wineList.response = response.data;
+    // })
+  };
+  var updateLike = function(video){
+    console.log("Inside the factory" ,video.id);
+    $http.post("/updateVideoLike/", video).then(function(response){
+        console.log('response ', response);
+        //getVideos();
+    });
+  };
+
   return{
     getVideos: getVideos,
     videoLibrary: videoLibrary,
     addVideo: addVideo,
     checkDay: checkDay,
     checkHour: checkHour,
+    addView: addView,
+    updateLike: updateLike
   }
 
 }]);

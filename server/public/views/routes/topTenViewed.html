@@ -1,8 +1,24 @@
 <h2>Top Ten Most Viewed</h2>
-<div ng-repeat="video in data.videoLibrary.response.data | orderBy: 'attributes.view_tally'">
-    <h3>{{video.attributes.title}}</h3>
-    <video ng-src="{{trustSrc(video.attributes.url)}}" controls>
-
-    </video>
-
-</div>
+  <div ng-cloak layout-gt-sm="row" layout="column">
+    <div flex-gt-sm="50" flex>
+    <md-toolbar layout="row" class="md-hue-3">
+      <div class="md-toolbar-tools">
+        <span>Videos</span>
+      </div>
+    </md-toolbar>
+    <md-content >
+        <md-list flex>
+          <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | orderBy: '-attributes.view_tally'"  ng-click="null">
+            <anguvideo class="angular-video" ng-model="video.attributes.url" ></anguvideo>
+            <div class="md-list-item-text" layout="column">
+            <h3>{{video.attributes.title}}</h3>
+            <p>Submitted on : {{video.attributes.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+            <p>Number of Views: {{video.attributes.view_tally}}</p>
+            <md-button class="md-primary md-raised" ng-click="updateLike(video, 'like')">Like</md-button>
+            <md-button class="md-primary md-raised" ng-click="updateLike(video, 'dislike')">Dislike</md-button>
+            </div>
+          </md-list-item>
+        </md-list>
+    </md-content>
+    </div>
+  </div>

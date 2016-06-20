@@ -5,7 +5,20 @@ myApp.controller("ShowVideoController", ["$scope","$window", "VideoService", fun
     // }else{
       VideoService.checkDay();
       VideoService.getVideos();
+
       $scope.data = VideoService;
+
+      $scope.addView = function(id){
+        VideoService.addView(id);
+        console.log("Function Fired");
+      };
+      $scope.updateLike = function(video, status){
+        video.review = status;
+        VideoService.updateLike(video);
+        console.log("Function Fired");
+      };
+
+
     //}
 }]);
 
@@ -24,5 +37,15 @@ myApp.controller("TopTenController", ["$scope", "VideoService", function($scope,
   console.log("Controller Working");
   VideoService.getVideos();
   $scope.data = VideoService;
+
+  $scope.addView = function(id){
+    VideoService.addView(id);
+    console.log("Function Fired");
+  };
+  $scope.updateLike = function(video, status){
+    video.review = status;
+    VideoService.updateLike(video);
+    console.log("Function Fired");
+  };
 
 }]);
