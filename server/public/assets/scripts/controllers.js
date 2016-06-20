@@ -34,27 +34,38 @@ myApp.controller("ShowVideoController", ["$scope","$window", "VideoService", fun
     }
 }]);
 
-myApp.controller("AddVideoController", ["$scope", "VideoService", function($scope, VideoService){
-  //Takes in video object from DOM
-  $scope.addVideo = function(video){
-    var slug = video.title.toLowerCase();
-    video.slug = slug;
-    console.log(video);
-    VideoService.addVideo(video);
-  };
+myApp.controller("AddVideoController", ["$scope", "$window", "VideoService", function($scope, $window, VideoService){
 
+  var day = VideoService.checkDay();
+  var hour = VideoService.checkHour();
+  if((day == 0 || day == 6) || (hour > 17 || hour < 9 )){
+      $window.location.href = '/views/closed.html'; //redirect to closed page if true
+  }else{
+    //Takes in video object from DOM
+    $scope.addVideo = function(video){
+      var slug = video.title.toLowerCase();
+      video.slug = slug;
+      console.log(video);
+      VideoService.addVideo(video);
+    };
+  }
 }]);
 
-myApp.controller("TopTenController", ["$scope", "VideoService", function($scope, VideoService){
-  //get data from api
-  VideoService.getVideos();
-  //make data available on $scope
-  $scope.data = VideoService;
-  //Have like funcionality on these pages also
-  $scope.updateLike = function(video, status){
-    video.review = status;
-    VideoService.updateLike(video);
-  };
-
+myApp.controller("TopTenController", ["$scope","$window", "VideoService", function($scope, $window, VideoService){
+  var day = VideoService.checkDay();
+  var hour = VideoService.checkHour();
+  if((day == 0 || day == 6) || (hour > 17 || hour < 9 )){
+        $window.location.href = '/views/closed.html'; //redirect to closed page if true
+  }else{
+    //get data from api
+    VideoService.getVideos();
+    //make data available on $scope
+    $scope.data = VideoService;
+    //Have like funcionality on these pages also
+    $scope.updateLike = function(video, status){
+      video.review = status;
+      VideoService.updateLike(video);
+    };
+  }
 
 }]);
