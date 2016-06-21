@@ -24,3 +24,10 @@ md-list-item{
   width:300px;
   height: auto;
 }
+#popularMessage{
+  position: fixed;
+  float: left;
+  top:100px;
+  background-color: #b5b5b5;
+  z-index: 1;
+}
