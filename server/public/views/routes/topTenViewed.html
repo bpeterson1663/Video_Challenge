@@ -6,11 +6,14 @@
           <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | limitTo: 10 | orderBy: '-attributes.view_tally'">
             <anguvideo class="angular-video" ng-model="video.attributes.url" ></anguvideo>
             <div class="md-list-item-text" layout="column">
-            <h3>{{video.attributes.title}}</h3>
-            <p>Submitted on : {{video.attributes.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</p>
-            <p>Number of Views: {{video.attributes.view_tally}}</p>
-            <md-button class="md-primary md-raised" ng-click="updateLike(video, 'like')">Like</md-button>
-            <md-button class="md-primary md-raised" ng-click="updateLike(video, 'dislike')">Dislike</md-button>
+              <h3>{{video.attributes.title}}</h3>
+              <p>Submitted on : {{video.attributes.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+              <p>Number of Views: {{video.attributes.view_tally}}</p>
+              <div class="btn-container">
+                <md-button class="md-primary md-raised btn" ng-click="updateView(video)">Mark As Viewed</md-button>
+                <md-button class="md-primary md-raised btn" ng-click="updateLike(video, 'like')">Like</md-button>
+                <md-button class="md-primary md-raised btn" ng-click="updateLike(video, 'dislike')">Dislike</md-button>
+              </div>
             </div>
           </md-list-item>
         </md-list>

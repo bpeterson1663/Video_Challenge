@@ -1,6 +1,4 @@
 <h2>Home</h2>
-
-<p id="popularMessage"></p>
 <div ng-cloak layout-gt-sm="row" layout="column">
   <div flex-gt-sm="50" flex>
   <md-content>
@@ -8,7 +6,7 @@
 
         <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | orderBy: '-attributes.created_at'">
           <!--anguvideo is a npm module for displaying embeded Youtube and vimeo urls-->
-          <anguvideo id="player" class="angular-video" ng-model="video.attributes.url"></anguvideo>
+          <anguvideo class="angular-video" ng-model="video.attributes.url"></anguvideo>
           <div class="md-list-item-text" layout="column">
             <h3>{{video.attributes.title}}</h3>
             <p>Submitted on : {{video.attributes.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</p>
