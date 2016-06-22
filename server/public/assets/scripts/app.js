@@ -82,26 +82,6 @@ myApp.directive("anguvideo", ['$sce', function ($sce) {
                     scope.url = $sce.trustAsResourceUrl(embedFriendlyUrl);
                 }
             });
-            var player;
-            function onYouTubePlayerAPIReady() {
-              console.log("inside api function");
-            player = new YT.Player('player', {
-            events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-            }
-            });
-            }
-            function onPlayerReady(event) {
-            event.target.playVideo();
-            }
-            function onPlayerStateChange(event) {
-            if(event.data === 0) {
-            alert("Video is done playing");
-            }
-            }
         }
-
-
     };
 }]);
