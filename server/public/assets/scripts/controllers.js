@@ -50,6 +50,10 @@ myApp.controller("TopTenController", ["$scope","$window", "VideoService", functi
     $scope.updateLike = function(video, status){
       VideoService.checkCookies(video, status);
     };
+    //event handler when view is pressed
+    $scope.updateView = function(video){
+      VideoService.updateViewCount(video);
+    };
  }
 
 }]);
