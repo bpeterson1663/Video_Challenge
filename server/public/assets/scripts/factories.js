@@ -3,6 +3,7 @@
 myApp.factory("VideoService", ["$http", "$window","$cookies", function($http, $window, $cookies){
   var videoLibrary = {};
   var response;
+
   //Make Route to GET request to ProofAPI.
   var getVideos = function(){
     //get videos and store them in library object
@@ -33,14 +34,6 @@ myApp.factory("VideoService", ["$http", "$window","$cookies", function($http, $w
       }
   };
 
-
-
-
-  function fade_out() {
-      document.getElementById('message').style.display = "none";
-      $window.location.href = '/views/index.html';
-  }
-
   var checkDay = function(){
     var day = new Date();
     var result = day.getDay();
@@ -57,9 +50,7 @@ myApp.factory("VideoService", ["$http", "$window","$cookies", function($http, $w
     $http.put("/updateVideoView/"+id).then(function(response){
 
     });
-    // $http.get("/getWineDatabase/"+userInfo.data._id).then(function(response){
-    //     wineList.response = response.data;
-    // })
+
   };
   //calls updatevideo route on server
   var updateLike = function(video){
@@ -81,7 +72,7 @@ myApp.factory("VideoService", ["$http", "$window","$cookies", function($http, $w
           now.setTime(now.getTime() + (9 * 3600 * 1000));//expires in nine hours
           $cookies.put('like', true, {expires: now});
           document.getElementById('popularMessage').innerHTML = "Thank you for your input! Glad you liked the video. You are allowed one like and one dislike a day so be sure to come back tomorrow to provide more feedback!";
-          setTimeout(fade_out, 2500);
+          setTimeout(fade_out_popular, 2000);
           video.review = status;
           updateLike(video);
         }
@@ -97,13 +88,22 @@ myApp.factory("VideoService", ["$http", "$window","$cookies", function($http, $w
         now.setTime(now.getTime() + (9 * 3600 * 1000));
         $cookies.put('dislike', true, {expires: now});
         document.getElementById('popularMessage').innerHTML = "Thank you for your input! We're sorry you didn't like the video. You are allowed one like and one dislike a day so be sure to come back tomorrow to provide more feedback!";
-        setTimeout(fade_out, 2500);
+        setTimeout(fade_out_popular, 2000);
         video.review = status;
         updateLike(video);
       }
     }
 
   };
+
+  var updateViewCount = function(video){
+    $http.post("/updateView/", video).then(function(response){
+        console.log('response ', response);
+        alert("Thanks for viewing!");
+        setTimeout(fade_out_popular, 2000);
+    });
+  };
+
 
   return{
     getVideos: getVideos,
@@ -113,14 +113,25 @@ myApp.factory("VideoService", ["$http", "$window","$cookies", function($http, $w
     checkHour: checkHour,
     addView: addView,
     updateLike: updateLike,
-    checkCookies: checkCookies
+    checkCookies: checkCookies,
+    updateViewCount: updateViewCount
+  }
+  
+  function search(nameKey, myArray){
+      for (var i=0; i < myArray.length; i++) {
+          if (myArray[i].attributes.url === nameKey) {
+              return true;
+          }
+      }
+  }
+
+  function fade_out() {
+      document.getElementById('popularMessage').style.display = "none";
+      $window.location.href = '/views/index.html';
+  }
+
+  function fade_out_popular() {
+    document.getElementById('popularMessage').style.display = "none";
+    $window.location.href = '/views/index.html';
   }
 }]);
-
-function search(nameKey, myArray){
-    for (var i=0; i < myArray.length; i++) {
-        if (myArray[i].attributes.url === nameKey) {
-            return true;
-        }
-    }
-}

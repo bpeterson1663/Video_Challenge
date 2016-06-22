@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 
 var request = require('request');
-//var authToken
+//var authToken 
 //Route to get Vidoes
 router.get('/getVideos', function(req, res){
   //Request made to ProofAPI
@@ -21,22 +21,23 @@ router.get('/getVideos', function(req, res){
     });
 });
 
-// router.get("/updateVideoView/", function(req, res){
-//   console.log("Request in updateVideo Route", req);
-//         request({
-//         method: 'PATCH',
-//         url: 'https://private-anon-0dff40ff7-proofapi.apiary-mock.com/videos/ef572226-7b56-401b-89fc-7aa8b3642f27',
-//         headers: {
-//           'Content-Type': 'application/json',
-//           'X-Auth-Token': 'eFuXWvwaHAFYxb7SbkwhrDu4'
-//         },
-//         body: "{  \"title\": \"The Highest Mountain\",  \"slug\": \"the-highest-mountain\"}"
-//       }, function (error, response, body) {
-//         // console.log('Status:', response.statusCode);
-//         // console.log('Headers:', JSON.stringify(response.headers));
-//         // console.log('Response:', body);
-//       });
-// });
+router.post("/updateView/", function(req, res){
+  console.log("Request in updateVideo Route", req);
+  request({
+    method: 'POST',
+    url: 'https://private-anon-376b78b0c-proofapi.apiary-mock.com/views',
+    headers: {
+    'Content-Type': 'application/json',
+    'X-Auth-Token': 'eFuXWvwaHAFYxb7SbkwhrDu4'
+    },
+    body: "{  \"video_id\": \"4d142443-60d6-47b3-a355-3fe16e1018c9\"}"
+    }, function (error, response, body) {
+    console.log('Status:', response.statusCode);
+    console.log('Headers:', JSON.stringify(response.headers));
+    console.log('Response:', body);
+    res.send(body);
+  });
+});
 //ROute to update videolie
 router.post("/updateVideoLike", function(req, res){
   console.log(req.body.id);

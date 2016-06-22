@@ -1,5 +1,5 @@
 //Configuration settings for controllers on pages
-var myApp = angular.module("myApp", [, "ngRoute", "ngMaterial", "ngAnimate", "ngCookies"]);
+var myApp = angular.module("myApp", [ "ngRoute", "ngMaterial", "ngAnimate", "ngCookies", "anguvideo"]);
 
 myApp.config(["$routeProvider", function($routeProvider){
       $routeProvider.
@@ -25,17 +25,18 @@ myApp.config(["$routeProvider", function($routeProvider){
 }]);
 
 myApp.directive("anguvideo", ['$sce', function ($sce) {
+
+
     return {
         restrict: 'EA',
         scope: {
             source: '=ngModel',
             width: '@',
-            height: '@',
-            click: '&'
+            height: '@'
         },
-        replace: false,
-        template: '<div class="anguvideo" >' +
-        '<iframe class="videoClass" ng-click="click()" type="text/html" width="{{width}}" height="{{height}}" ng-src="{{url}}" allowfullscreen frameborder="0"></iframe>' +
+        replace: true,
+        template: '<div class="anguvideo">' +
+        '<iframe id="ytplayer" class="videoClass" type="text/html" width="{{width}}" height="{{height}}" ng-src="{{url}}" allowfullscreen frameborder="0"></iframe>' +
         '</div>',
         link: function (scope, element, attrs) {
             var embedFriendlyUrl = "",
@@ -81,6 +82,26 @@ myApp.directive("anguvideo", ['$sce', function ($sce) {
                     scope.url = $sce.trustAsResourceUrl(embedFriendlyUrl);
                 }
             });
+            var player;
+            function onYouTubePlayerAPIReady() {
+              console.log("inside api function");
+            player = new YT.Player('player', {
+            events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+            }
+            });
+            }
+            function onPlayerReady(event) {
+            event.target.playVideo();
+            }
+            function onPlayerStateChange(event) {
+            if(event.data === 0) {
+            alert("Video is done playing");
+            }
+            }
         }
+
+
     };
 }]);

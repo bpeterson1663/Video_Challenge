@@ -12,8 +12,12 @@ md-content{
   margin: 0 auto;
   width: 400px;
 }
+md-list{
+  width:800px;
+  display:inline;
+}
 md-list-item{
-  display: block;
+  display:block;
 }
 .lead{
   text-align: center;
@@ -24,10 +28,25 @@ md-list-item{
   width:300px;
   height: auto;
 }
+.btn-container{
+  display: inline;
+  width: auto;
+}
+.btn{
+  font-size: .7em;
+  width: 110px;
+
+}
 #popularMessage{
+  display: none;
   position: fixed;
   float: left;
   top:100px;
+  width: 300px;
+  padding:10px;
   background-color: #b5b5b5;
+  z-index: 1;
+}
+#videoPlayer{
   z-index: 1;
 }

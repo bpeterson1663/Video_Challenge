@@ -1,4 +1,5 @@
 <h2>Home</h2>
+
 <p id="popularMessage"></p>
 <div ng-cloak layout-gt-sm="row" layout="column">
   <div flex-gt-sm="50" flex>
@@ -7,17 +8,20 @@
 
         <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | orderBy: '-attributes.created_at'">
           <!--anguvideo is a npm module for displaying embeded Youtube and vimeo urls-->
-          <div anguvideo click="updateView()" class="angular-video" ng-model="video.attributes.url"></div>
-
+          <anguvideo id="player" class="angular-video" ng-model="video.attributes.url"></anguvideo>
           <div class="md-list-item-text" layout="column">
-          <h3>{{video.attributes.title}}</h3>
-          <p>Submitted on : {{video.attributes.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</p>
-          <p>Number of Likes: {{video.attributes.vote_tally}}</p>
-          <p>Number of Views: {{video.attributes.view_tally}}</p>
-          <md-button class="md-primary md-raised" ng-click="updateLike(video, 'like')">Like</md-button>
-          <md-button class="md-primary md-raised" ng-click="updateLike(video, 'dislike')">Dislike</md-button>
+            <h3>{{video.attributes.title}}</h3>
+            <p>Submitted on : {{video.attributes.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+            <p>Number of Likes: {{video.attributes.vote_tally}}</p>
+            <p>Number of Views: {{video.attributes.view_tally}}</p>
+            <div class="btn-container">
+              <md-button class="md-primary md-raised btn" ng-click="updateView(video)">Mark As Viewed</md-button>
+              <md-button class="md-primary md-raised btn" ng-click="updateLike(video, 'like')">Like</md-button>
+              <md-button class="md-primary md-raised btn" ng-click="updateLike(video, 'dislike')">Dislike</md-button>
+            </div>
           </div>
         </md-list-item>
+        <md-divider ></md-divider>
       </md-list>
   </md-content>
   </div>
