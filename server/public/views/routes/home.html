@@ -3,8 +3,14 @@
   <div flex-gt-sm="50" flex>
   <md-content>
       <md-list flex>
-
-        <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | orderBy: '-attributes.created_at'">
+        <p class="lead">Displaying the most recent twenty videos.</p>
+        <form>
+          <md-input-container>
+            <label for="search">Search for older vidoes</label>
+            <input name="search" ng-model="query" type="text" autofocus>
+          </md-input-container>
+        </form>
+        <md-list-item class="md-3-line" ng-repeat="video in data.videoLibrary.response.data | filter:query | orderBy: '-attributes.created_at'  | limitTo: 20  ">
           <!--anguvideo is a npm module for displaying embeded Youtube and vimeo urls-->
           <anguvideo class="angular-video" ng-model="video.attributes.url"></anguvideo>
           <div class="md-list-item-text" layout="column">
