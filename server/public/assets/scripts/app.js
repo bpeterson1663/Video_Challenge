@@ -1,5 +1,5 @@
 //Configuration settings for controllers on pages
-var myApp = angular.module("myApp", [ "ngRoute", "ngMaterial", "ngAnimate", "ngCookies", "anguvideo"]);
+var myApp = angular.module("myApp", [ "ngRoute", "ngMaterial", "ngCookies"]);
 
 myApp.config(["$routeProvider", function($routeProvider){
       $routeProvider.
@@ -25,8 +25,6 @@ myApp.config(["$routeProvider", function($routeProvider){
 }]);
 
 myApp.directive("anguvideo", ['$sce', function ($sce) {
-
-
     return {
         restrict: 'EA',
         scope: {
@@ -35,9 +33,7 @@ myApp.directive("anguvideo", ['$sce', function ($sce) {
             height: '@'
         },
         replace: true,
-        template: '<div class="anguvideo">' +
-        '<iframe id="ytplayer" class="videoClass" type="text/html" width="{{width}}" height="{{height}}" ng-src="{{url}}" allowfullscreen frameborder="0"></iframe>' +
-        '</div>',
+        template: '<iframe id="ytplayer" class="videoClass" type="text/html" width="{{width}}" height="{{height}}" ng-src="{{url}}" allowfullscreen frameborder="0"></iframe>',
         link: function (scope, element, attrs) {
             var embedFriendlyUrl = "",
                 urlSections,

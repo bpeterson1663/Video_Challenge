@@ -8,7 +8,9 @@ myApp.factory("VideoService", ["$http", "$window","$cookies", function($http, $w
   var getVideos = function(){
     //get videos and store them in library object
     $http.get('/getVideos').then(function(res){
+      console.log("getvideso success, ", res);
       videoLibrary.response = res.data;
+    
     });
   };
   //calls add video route in server
@@ -87,7 +89,7 @@ myApp.factory("VideoService", ["$http", "$window","$cookies", function($http, $w
         $cookies.put('dislike', true, {expires: now});
         video.review = status;
         updateLike(video);
-        
+
         alert("Thank you for your input! We're sorry you didn't like the video. \nYou are allowed one like and one dislike a day so be sure to come back tomorrow to provide more feedback!");
         $window.location.href = '/views/index.html';
 
