@@ -1,4 +1,5 @@
-# video_challenge
+# Video Challenge
+
 The purpose of this application is created a community in which individuals can upload and share their favorite Youtube or Vimeo video link. The application hooks up to an API which stores the information for each video. 
 Individuals can like or dislike a video that is posted while also viewwing the top ten most viewed and top ten most popular based on votes.
 The application will only be available for use during business hours - Monday - Friday 9:00 AM to 5:00 PM. 
@@ -13,5 +14,5 @@ You will see a message "Listening on port 3000" if successful.
 Then in your browser type in "localhost:3000" and you will be up and running. 
 
 You can also see a live demo of this version by clicking the link below.
-https://secure-hollows-70898.herokuapp.com/views/closed.html
+https://secure-hollows-70898.herokuapp.com
 
