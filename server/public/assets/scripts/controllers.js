@@ -1,10 +1,10 @@
 myApp.controller("ShowVideoController", ["$scope","$window","$interval", "VideoService", function($scope, $window, $interval, VideoService){
     //checks if Day of the week is either saturday or sunday and if outside of 9:00 AM to 5:00 PM
-    // var day = VideoService.checkDay();
-    // var hour = VideoService.checkHour();
-    // if((day == 0 || day == 6) || (hour > 17 || hour < 9 )){
-    //     $window.location.href = '/views/closed.html'; //redirect to closed page if true
-    // }else{
+    var day = VideoService.checkDay();
+    var hour = VideoService.checkHour();
+    if((day == 0 || day == 6) || (hour > 17 || hour < 9 )){
+        $window.location.href = '/views/closed.html'; //redirect to closed page if true
+    }else{
       //get videos from api
       VideoService.getVideos();
 
@@ -19,7 +19,7 @@ myApp.controller("ShowVideoController", ["$scope","$window","$interval", "VideoS
       $scope.updateView = function(video){
         VideoService.updateViewCount(video);
       };
-    //}
+    }
 }]);
 
 myApp.controller("AddVideoController", ["$scope", "$window", "VideoService", function($scope, $window, VideoService){

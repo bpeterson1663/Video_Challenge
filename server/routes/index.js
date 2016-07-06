@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 
 var request = require('request');
-var authToken;
+var authToken = "bhotUYTuZPa58B6VFoWriehC";
 //Route to get Vidoes
 router.get('/getVideos', function(req, res){
   //Request made to ProofAPI
