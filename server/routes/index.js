@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 
 var request = require('request');
-var authToken;
+var authToken = "bhotUYTuZPa58B6VFoWriehC";
 //Route to get Vidoes
 router.get('/getVideos', function(req, res){
   //Request made to ProofAPI
@@ -37,7 +37,7 @@ router.post("/updateView/", function(req, res){
       res.send(body);
     });
 });
-//ROute to update videolie
+//ROute to update videolike
 router.post("/updateVideoLike", function(req, res){
   // console.log(req.body.id);
     var id = req.body.id;

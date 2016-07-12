@@ -10,7 +10,8 @@ myApp.factory("VideoService", ["$http", "$window","$cookies", function($http, $w
     $http.get('/getVideos').then(function(res){
       console.log("getvideso success, ", res);
       videoLibrary.response = res.data;
-    
+      console.log("video Library: ", videoLibrary.response);
+      return videoLibrary;
     });
   };
   //calls add video route in server
@@ -19,16 +20,19 @@ myApp.factory("VideoService", ["$http", "$window","$cookies", function($http, $w
     var videoArray = videoLibrary.response.data;
       //search videoarray using search funciton on line 123 to check if video has been uploaded
       if(search(newVideo.url, videoArray)){
+        document.getElementById('message').style.backgroundColor = "#df3d3d";
         document.getElementById('message').innerHTML = "That video is already uploaded!";//display message
         setTimeout(fade_out, 2500);//fade out message
       }
       else{//add video if no url was found
         $http.post('/addVideo', newVideo).then(function(res){
             if(res.status == 200){
+              document.getElementById('message').style.backgroundColor = "#00db58";
               document.getElementById('message').innerHTML = "Video Added Successfully!";
               setTimeout(fade_out, 2500);
             }
             else{
+              document.getElementById('message').style.backgroundColor = "#df3d3d";
               document.getElementById('message').innerHTML = "There was an error uploading your video. Please Try Again.";
               setTimeout(fade_out, 2500);
             }

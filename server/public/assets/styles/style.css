@@ -1,9 +1,6 @@
 h1{
   text-align: center;
 }
-nav{
-  background-color: #8c9eff;
-}
 main{
   margin: 0 auto;
   text-align: center;
@@ -38,6 +35,8 @@ md-list-item{
   width: 110px;
 
 }
+
+/*==========NAVIGATION STYLYING========*/
 ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -88,7 +87,7 @@ ul.topnav li.icon {display: none;}
     text-align: left;
   }
 }
-
+/*==========END OF NAVIGATION STYLYING========*/
 #popularMessage{
   display: none;
   position: fixed;
@@ -98,6 +97,12 @@ ul.topnav li.icon {display: none;}
   padding:10px;
   background-color: #b5b5b5;
   z-index: 1;
+}
+#message{
+  font-weight: bold;
+  margin: 0 auto;
+  width: 500px;
+  padding: 5px;
 }
 #videoPlayer{
   z-index: 1;

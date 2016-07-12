@@ -5,6 +5,7 @@ myApp.controller("ShowVideoController", ["$scope","$window","$interval", "VideoS
     if((day == 0 || day == 6) || (hour > 17 || hour < 9 )){
         $window.location.href = '/views/closed.html'; //redirect to closed page if true
     }else{
+      
       //get videos from api
       VideoService.getVideos();
 
