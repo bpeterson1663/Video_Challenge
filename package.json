@@ -8,5 +8,8 @@
     "start": "node server/app.js"
   },
   "author": "Brady Peterson",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^4.5.5"
+  }
 }
